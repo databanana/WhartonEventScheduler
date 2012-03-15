@@ -2,3 +2,5 @@
 *.ap_
 *.class
 .DS_Store
+/bin
+/gen
