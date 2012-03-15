@@ -29,12 +29,14 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="showAllEvents"
             android:text="All Events" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="showMyEvents"
             android:text="My Events" />
 
     </LinearLayout>
