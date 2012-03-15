@@ -31,7 +31,7 @@ public class ListElementArrayAdapter<T> extends ArrayAdapter<T> {
 		LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		v = inflater.inflate(listviewid, null);
 		
-		TextView tv = (TextView)v.findViewById(R.id.event_description);
+		TextView tv = (TextView)v.findViewById(R.id.event_name);
 		tv.setText(objects[position].toString());
 		tv.setOnClickListener(new View.OnClickListener() {
 
@@ -57,8 +57,4 @@ public class ListElementArrayAdapter<T> extends ArrayAdapter<T> {
 		return v;
 		
 	}
-
-
-
-
 }

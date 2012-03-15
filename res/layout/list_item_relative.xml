@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal" >
-
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:layout_height="wrap_content">
 
     <Button
         android:id="@+id/event_select_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical = "true"
         android:background = "@drawable/star_selector"  />
-	<TextView
-	    android:id="@+id/event_time"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:padding="10dp"
-	    android:textSize="10sp" >
-	</TextView>
+
 	<TextView
 	    android:id="@+id/event_name"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:padding="10dp"
-	    android:textSize="16sp" >
+	    android:layout_toRightOf="@+id/event_select_button"
+	    android:padding="3dp"
+	    android:textSize="25sp"
+	    android:clickable="true"
+	    android:text="Special Event" >
 	</TextView>
-
-	</LinearLayout>
 	
+	<TextView
+	    android:id="@+id/event_time"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@+id/event_select_button"
+	    android:layout_below="@+id/event_name"
+	    android:padding="3dp"
+	    android:textSize="16sp"
+	    android:text="5:00-8:00" >
+	</TextView>
 
 	<ImageView
 	    android:id="@+id/imageView1"
@@ -39,4 +39,4 @@
 	    android:layout_height="wrap_content"
 	    android:src="@android:drawable/divider_horizontal_bright" />
 	
-</LinearLayout>
+</RelativeLayout>
