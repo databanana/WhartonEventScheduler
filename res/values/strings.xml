@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, WhartonAndroidAppActivity!</string>
     <string name="app_name">Wharton Event Schedule</string>
+    <string name="event_name">[Event Name]</string>
 
 </resources>
