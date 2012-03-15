@@ -2,11 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="50dip"  android:background="@drawable/gradient_background" android:shadowColor="#111111" android:shadowDx="1.5"  android:shadowDy="1.5" android:id="@+id/titleBar">
+        <TextView android:text="@string/event_name" android:paddingTop="11dip" android:textSize="23dip" android:id="@+id/event_title" android:shadowRadius="2.0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:paddingLeft="20dip" android:paddingRight="4dip" android:typeface="sans" android:textStyle="bold" android:shadowColor="#111111" android:shadowDx="1.5" android:shadowDy="1.5"></TextView>
+        <ImageView android:layout_width="1dip" android:layout_height="fill_parent" android:background="@drawable/left_right_borders" android:layout_toLeftOf="@+id/calendar"></ImageView>
+        <ImageButton android:src="@drawable/calendar" android:id="@+id/calendar" android:layout_width="wrap_content" android:layout_height="fill_parent" android:paddingLeft="12dip" android:paddingRight="12dip" android:paddingTop="3dip" android:layout_alignParentRight="true" android:background="@drawable/control_button" android:onClick="refresh"></ImageButton>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/eventListView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@+id/titleBar"
         android:layout_above="@+id/eventListOptions" >
 
     </ListView>
