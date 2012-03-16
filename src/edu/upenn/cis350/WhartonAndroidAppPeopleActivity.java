@@ -2,6 +2,7 @@ package edu.upenn.cis350;
 
 import android.app.*;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.*;
@@ -38,6 +39,12 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 	}
 
 	public void messageClicked(int person_id) {
+		Intent i = new Intent(Intent.ACTION_SEND);
+		i.setType("text/plain");
+		i.putExtra(Intent.EXTRA_EMAIL, new String[] {"bob@email.com"});
+		i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Wharton event");
+		this.startActivity(Intent.createChooser(i, "Send mail..."));
+		
 		// Open send message view for this person
 		Toast.makeText(getApplicationContext(), "Message button clicked: " + person_id,
 				Toast.LENGTH_SHORT).show();
