@@ -12,7 +12,7 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 
 	private SQLiteDatabase db;
 	private ListView lv;
-	private CustomCursorAdapter dbadapter;
+	private PeopleCursorAdapter dbadapter;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -33,8 +33,8 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 				"name", "title", "profile_picture" }, null, null, null, null,
 				"name asc");
 		//Need to use a custom cursor adapter
-		//dbadapter = new CustomCursorAdapter(this, c);
-		//lv.setAdapter(dbadapter);
+		dbadapter = new PeopleCursorAdapter(this, c);
+		lv.setAdapter(dbadapter);
 	}
 
 	public void messageClicked(int person_id) {

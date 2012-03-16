@@ -44,6 +44,7 @@ public class PeopleCursorAdapter extends CursorAdapter {
 		TextView titleView = (TextView) view.findViewById(R.id.person_title);
 		String title = cursor
 				.getString(cursor.getColumnIndex("title"));
+		titleView.setText(title);
 
 		// Set email button tag
 		Button btn = (Button) view.findViewById(R.id.people_message_button);
