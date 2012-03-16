@@ -31,7 +31,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		super(activity, c);
 		this.activity = activity;
 		this.date_input_format = new SimpleDateFormat("YYY-MM-DD HH:MM");
-		this.date_output_format = new SimpleDateFormat("HH:MM");
+		this.date_output_format = new SimpleDateFormat("hh:mm");
 		this.date_output_format_ampm = new SimpleDateFormat("aa");
 	}
 
@@ -57,6 +57,10 @@ public class CustomCursorAdapter extends CursorAdapter {
 		TextView name = (TextView) view.findViewById(R.id.event_name);
 		name.setTag(R.id.EVENT_DB_KEY, event_pk);
 		name.setText(cursor.getString(cursor.getColumnIndex("name")));
+		
+		//Set all text tag
+		View alltext = view.findViewById(R.id.all_event_text);
+		alltext.setTag(R.id.EVENT_DB_KEY, event_pk);
 
 		// TO-DO: parse time field
 		//YYY-MM-DD HH:MM
@@ -114,7 +118,8 @@ public class CustomCursorAdapter extends CursorAdapter {
 						.eventTextClicked(event_id);
 			}
 		};
-		name.setOnClickListener(eventListener);
+
+		alltext.setOnClickListener(eventListener);
 	}
 
 	@Override
