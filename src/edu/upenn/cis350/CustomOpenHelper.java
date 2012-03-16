@@ -11,7 +11,7 @@ public class CustomOpenHelper extends SQLiteOpenHelper{
     private static final String CREATE_EVENTS_TABLE =
     		"CREATE TABLE event (_id INTEGER PRIMARY KEY, name VARCHAR(255), starttime TEXT, endtime TEXT, location VARCHAR(255), isfavorite INTEGER, moderator INTEGER, FOREIGN KEY(moderator) REFERENCES person(_id))";
 	private static final String CREATE_PERSON_TABLE = 
-    		"CREATE TABLE person (_id INTEGER PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), title TEXT, profile_picture VARCHAR(255)";
+    		"CREATE TABLE person (_id INTEGER PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), title TEXT, profile_picture VARCHAR(255))";
     private static final String CREATE_SPEAKERS_TABLE =
     		"CREATE TABLE speakers (_id INTEGER PRIMARY KEY, event_id INTEGER, speaker_id INTEGER, FOREIGN KEY(event_id) REFERENCES event(_id), FOREIGN KEY(speaker_id) REFERENCES person(_id))";
     

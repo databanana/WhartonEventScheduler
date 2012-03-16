@@ -24,7 +24,7 @@ public class WhartonAndroidAppActivity extends Activity {
 		// Create a SQLite database holding event info
 		CustomOpenHelper dbopenhelper = new CustomOpenHelper(this);
 		db = dbopenhelper.getWritableDatabase();
-
+		
 		setContentView(R.layout.main);
 
 		this.lv = (ListView) findViewById(R.id.eventListView);
@@ -70,7 +70,7 @@ public class WhartonAndroidAppActivity extends Activity {
 		db.close();
 	}
 
-	public void showAllEvents(View v) {
+	public void showAllEvents() {
 		Log.d("click", "Showing all events");
 		favoriteview = false;
 		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
@@ -79,12 +79,18 @@ public class WhartonAndroidAppActivity extends Activity {
 		dbadapter.changeCursor(c);
 	}
 
-	public void showMyEvents(View v) {
+	public void showMyEvents() {
 		Log.d("click", "Showing my events");
 		favoriteview = true;
 		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
 				"name", "starttime", "endtime" }, "isfavorite = 1", null, null,
 				null, "starttime asc");
 		dbadapter.changeCursor(c);
+	}
+	
+	public void toggleMyEvents(View v) {
+		favoriteview = !favoriteview;
+		if (favoriteview) showMyEvents();
+		else showAllEvents();
 	}
 }
