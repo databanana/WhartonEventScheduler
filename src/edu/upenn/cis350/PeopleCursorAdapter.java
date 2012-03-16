@@ -1,12 +1,8 @@
 package edu.upenn.cis350;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,59 +13,36 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-public class CustomCursorAdapter extends CursorAdapter {
+public class PeopleCursorAdapter extends CursorAdapter {
 	private Activity activity;
-	private SimpleDateFormat date_input_format;
-	private SimpleDateFormat date_output_format;
-	private SimpleDateFormat date_output_format_ampm;
 
-//	public CustomCursorAdapter(Activity activity, Cursor c) {
-//		super(activity, c);
-//		this.activity = activity;
-//	}
-	public CustomCursorAdapter(Activity activity, Cursor c) {
+	public PeopleCursorAdapter(Activity activity, Cursor c) {
 		super(activity, c);
 		this.activity = activity;
-		this.date_input_format = new SimpleDateFormat("YYY-MM-DD HH:MM");
-		this.date_output_format = new SimpleDateFormat("HH:MM");
-		this.date_output_format_ampm = new SimpleDateFormat("aa");
 	}
 
-	// public CustomCursorAdapter(Activity activity, Cursor c, boolean
-	// autoRequery) {
-	// super(activity, c, autoRequery);
-	// this.activity = activity;
-	// }
+	public PeopleCursorAdapter(Activity activity, Cursor c, boolean autoRequery) {
+		super(activity, c, autoRequery);
+		this.activity = activity;
+	}
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-
-		Log.d("cca", "Binding view");
 		// Set view tag as event ID
-		Integer event_pk = new Integer(cursor.getInt(cursor
+		Integer person_pk = new Integer(cursor.getInt(cursor
 				.getColumnIndex("_id")));
-		view.setTag(R.id.EVENT_DB_KEY, event_pk);
+		view.setTag(R.id.EVENT_DB_KEY, person_pk);
 
 		// Set name view tag and text
-		TextView name = (TextView) view.findViewById(R.id.event_name);
-		name.setTag(R.id.EVENT_DB_KEY, event_pk);
+		TextView name = (TextView) view.findViewById(R.id.person_name);
+		name.setTag(R.id.EVENT_DB_KEY, person_pk);
 		name.setText(cursor.getString(cursor.getColumnIndex("name")));
 
-		// TO-DO: parse time field
-		//YYY-MM-DD HH:MM
-		
+		// TODO: parse time field
 		TextView time = (TextView) view.findViewById(R.id.event_time);
-		Date start_time;
-		Date end_time;
-		try {
-			start_time = date_input_format.parse(cursor
-					.getString(cursor.getColumnIndex("starttime")));
-			end_time = date_input_format.parse(cursor.getString(cursor.getColumnIndex("endtime")));
-		} catch (java.text.ParseException p) {
-			start_time = null;
-			end_time = null;
-		}
-		time.setText(getTimeString(start_time, end_time));
+		String start_time = cursor
+				.getString(cursor.getColumnIndex("starttime"));
+		String end_time = cursor.getString(cursor.getColumnIndex("endtime"));
 
 		// Set button tag
 		Button btn = (Button) view.findViewById(R.id.event_select_button);
@@ -79,7 +52,6 @@ public class CustomCursorAdapter extends CursorAdapter {
 		int stored_favorite = cursor
 				.getInt(cursor.getColumnIndex("isfavorite"));
 		btn.setPressed(stored_favorite != 0);
-		Log.d("sql", "event id "+event_pk+" was "+(stored_favorite!=0?"":"not")+" favorited");
 
 		// Set button touch listener
 		final OnTouchListener buttonListener = new OnTouchListener() {
@@ -122,16 +94,4 @@ public class CustomCursorAdapter extends CursorAdapter {
 		bindView(v, context, cursor);
 		return v;
 	}
-	
-	public String getTimeString(Date start, Date end) {
-		if (start==null || end==null) return "";
-		String start_ampm = date_output_format_ampm.format(start);
-		String end_ampm = date_output_format_ampm.format(end);
-		String starttime = date_output_format.format(start);
-		String endtime = date_output_format.format(end);
-		if (start_ampm.equals(end_ampm))
-			return starttime + "-" + endtime + " " + end_ampm;
-		else return starttime + " " + start_ampm + endtime + " " + end_ampm;
-	}
-
 }
