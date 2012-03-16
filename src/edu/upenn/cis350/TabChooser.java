@@ -19,7 +19,7 @@ public class TabChooser extends TabActivity {
 	    
 	    intent = new Intent().setClass(this, EventListActivity.class);
 	    spec = tabHost.newTabSpec("events")
-	    		.setIndicator("Events", res.getDrawable(R.drawable.people_tab_image))
+	    		.setIndicator("Events", res.getDrawable(R.drawable.event_tab_image))
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 	    
