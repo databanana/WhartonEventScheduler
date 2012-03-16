@@ -3,6 +3,7 @@ package edu.upenn.cis350;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,10 +17,10 @@ import android.widget.TextView;
 public class CustomCursorAdapter extends CursorAdapter {
 	private Activity activity;
 
-	public CustomCursorAdapter(Activity activity, Cursor c) {
-		super(activity, c);
-		this.activity = activity;
-	}
+//	public CustomCursorAdapter(Activity activity, Cursor c) {
+//		super(activity, c);
+//		this.activity = activity;
+//	}
 
 	public CustomCursorAdapter(Activity activity, Cursor c, boolean autoRequery) {
 		super(activity, c, autoRequery);
@@ -28,6 +29,8 @@ public class CustomCursorAdapter extends CursorAdapter {
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
+
+		Log.d("cca", "Binding view");
 		// Set view tag as event ID
 		Integer event_pk = new Integer(cursor.getInt(cursor
 				.getColumnIndex("_id")));
@@ -52,6 +55,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		int stored_favorite = cursor
 				.getInt(cursor.getColumnIndex("isfavorite"));
 		btn.setPressed(stored_favorite != 0);
+		Log.d("sql", "event id "+event_pk+" was "+(stored_favorite!=0?"":"not")+" favorited");
 
 		// Set button touch listener
 		final OnTouchListener buttonListener = new OnTouchListener() {

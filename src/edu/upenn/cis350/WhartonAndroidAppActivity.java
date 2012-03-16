@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.*;
 import android.widget.*;
+import android.util.Log;
 import android.view.*;
 
 public class WhartonAndroidAppActivity extends Activity {
@@ -32,7 +33,7 @@ public class WhartonAndroidAppActivity extends Activity {
 		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
 				"name", "starttime", "endtime" }, null, null, null, null,
 				"starttime asc");
-		dbadapter = new CustomCursorAdapter(this, c);
+		dbadapter = new CustomCursorAdapter(this, c, false);
 		lv.setAdapter(dbadapter);
 	}
 
@@ -56,6 +57,8 @@ public class WhartonAndroidAppActivity extends Activity {
 		// Toast.makeText(getApplicationContext(), "Button clicked: " + event_id
 		// + " Pressed: " + isfavorite, Toast.LENGTH_SHORT).show();
 	}
+	
+	public void refresh(View v) { Log.d("refresh", "Called refresh"); } 
 
 	public void eventTextClicked(int event_id) {
 		// Do something when the event is clicked
@@ -68,6 +71,7 @@ public class WhartonAndroidAppActivity extends Activity {
 	}
 
 	public void showAllEvents(View v) {
+		Log.d("click", "Showing all events");
 		favoriteview = false;
 		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
 				"name", "starttime", "endtime" }, null, null, null, null,
@@ -76,6 +80,7 @@ public class WhartonAndroidAppActivity extends Activity {
 	}
 
 	public void showMyEvents(View v) {
+		Log.d("click", "Showing my events");
 		favoriteview = true;
 		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
 				"name", "starttime", "endtime" }, "isfavorite = 1", null, null,
