@@ -38,7 +38,8 @@ public class CustomCursorAdapter extends CursorAdapter {
 	 public CustomCursorAdapter(Activity activity, Cursor c, boolean
 	 autoRequery) {
 		 super(activity, c, autoRequery);
-		this.date_input_format = new SimpleDateFormat("YYY-MM-DD HH:MM");
+		 this.activity = activity;
+		this.date_input_format = new SimpleDateFormat("yyyy-MM-DD HH:MM");
 		this.date_output_format = new SimpleDateFormat("HH:MM");
 		this.date_output_format_ampm = new SimpleDateFormat("aa");
 	 }
