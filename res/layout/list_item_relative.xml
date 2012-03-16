@@ -19,7 +19,8 @@
 	    android:padding="3dp"
 	    android:textSize="25sp"
 	    android:clickable="true"
-	    android:text="Special Event" >
+	    android:text="Special Event" 
+	    android:textColor="#000000">
 	</TextView>
 	
 	<TextView
@@ -30,7 +31,8 @@
 	    android:layout_below="@+id/event_name"
 	    android:padding="3dp"
 	    android:textSize="16sp"
-	    android:text="5:00-8:00" >
+	    android:text="5:00-8:00"
+	    android:textColor="#000000" >
 	</TextView>
 
 	<ImageView
