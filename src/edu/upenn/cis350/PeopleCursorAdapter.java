@@ -32,26 +32,23 @@ public class PeopleCursorAdapter extends CursorAdapter {
 		Integer person_pk = new Integer(cursor.getInt(cursor
 				.getColumnIndex("_id")));
 		view.setTag(R.id.EVENT_DB_KEY, person_pk);
+		
+		// TODO: Set person's profile picture
 
 		// Set name view tag and text
 		TextView name = (TextView) view.findViewById(R.id.person_name);
 		name.setTag(R.id.EVENT_DB_KEY, person_pk);
 		name.setText(cursor.getString(cursor.getColumnIndex("name")));
 
-		// TODO: parse time field
-		TextView time = (TextView) view.findViewById(R.id.event_time);
-		String start_time = cursor
-				.getString(cursor.getColumnIndex("starttime"));
-		String end_time = cursor.getString(cursor.getColumnIndex("endtime"));
+		// TODO: parse person's title
+		TextView titleView = (TextView) view.findViewById(R.id.person_title);
+		String title = cursor
+				.getString(cursor.getColumnIndex("title"));
 
-		// Set button tag
-		Button btn = (Button) view.findViewById(R.id.event_select_button);
-		btn.setTag(R.id.EVENT_DB_KEY, event_pk);
+		// Set email button tag
+		Button btn = (Button) view.findViewById(R.id.people_message_button);
+		btn.setTag(R.id.EVENT_DB_KEY, person_pk);
 
-		// Set button state
-		int stored_favorite = cursor
-				.getInt(cursor.getColumnIndex("isfavorite"));
-		btn.setPressed(stored_favorite != 0);
 
 		// Set button touch listener
 		final OnTouchListener buttonListener = new OnTouchListener() {
@@ -60,11 +57,9 @@ public class PeopleCursorAdapter extends CursorAdapter {
 			public boolean onTouch(View v, MotionEvent me) {
 				int action = me.getActionMasked();
 				if (action == MotionEvent.ACTION_UP) {
-					v.setPressed(!v.isPressed());
-					int event_id = ((Integer) v.getTag(R.id.EVENT_DB_KEY))
+					int person_id = ((Integer) v.getTag(R.id.EVENT_DB_KEY))
 							.intValue();
-					((WhartonAndroidAppActivity) activity).eventButtonClicked(
-							event_id, v.isPressed());
+					((WhartonAndroidAppPeopleActivity) activity).messageClicked(person_id);
 					return true;
 				} else
 					return true;
@@ -77,10 +72,10 @@ public class PeopleCursorAdapter extends CursorAdapter {
 		final OnClickListener eventListener = new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int event_id = ((Integer) v.getTag(R.id.EVENT_DB_KEY))
+				int person_id = ((Integer) v.getTag(R.id.EVENT_DB_KEY))
 						.intValue();
-				((WhartonAndroidAppActivity) activity)
-						.eventTextClicked(event_id);
+				((WhartonAndroidAppPeopleActivity) activity)
+						.personTextClicked(person_id);
 			}
 		};
 		name.setOnClickListener(eventListener);
@@ -90,7 +85,7 @@ public class PeopleCursorAdapter extends CursorAdapter {
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflater.inflate(R.layout.list_item, parent, false);
+		View v = inflater.inflate(R.layout.people_list_item, parent, false);
 		bindView(v, context, cursor);
 		return v;
 	}

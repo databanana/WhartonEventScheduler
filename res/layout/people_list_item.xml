@@ -10,8 +10,17 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
+    <ImageView android:src="@drawable/profile_holder" 
+        android:layout_width="63dip" 
+        android:layout_marginLeft="5dip" 
+        android:adjustViewBounds="true" 
+        android:scaleType="fitXY" 
+        android:minHeight="63dip" 
+        android:maxHeight="63dip" 
+        android:layout_height="wrap_content">
+    </ImageView>
 	<TextView
-	    android:id="@+id/event_time"
+	    android:id="@+id/person_title"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:padding="10dp"
@@ -19,7 +28,7 @@
 	    android:textColor="#000000" >
 	</TextView>
 	<TextView
-	    android:id="@+id/event_name"
+	    android:id="@+id/person_name"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:padding="10dp"
@@ -31,7 +40,9 @@
         android:id="@+id/people_message_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background = "@drawable/message_button"  />
+        android:layout_marginTop="10dp"
+        android:background = "@drawable/mail"
+        />
 
 	</LinearLayout>
 	

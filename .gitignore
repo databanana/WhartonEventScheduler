@@ -7,10 +7,13 @@
 
 bin/classes.dex
 
+
+bin/classes/edu/upenn/cis350/CustomOpenHelper.class
+
+bin/classes/edu/upenn/cis350/R$drawable.class
+
 bin/classes/edu/upenn/cis350/R$id.class
 
 bin/classes/edu/upenn/cis350/R$layout.class
 
 bin/classes/edu/upenn/cis350/R$string.class
-
-bin/classes.dex

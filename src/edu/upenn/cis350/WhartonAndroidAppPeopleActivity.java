@@ -29,9 +29,9 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 		// Subclass CursorAdapter to read data from the database into the
 		// ListView
 		// TODO: Fix this for attendees
-		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
-				"name", "starttime", "endtime" }, null, null, null, null,
-				"starttime asc");
+		Cursor c = db.query("person", new String[] { "_id",
+				"name", "title", "profile_picture" }, null, null, null, null,
+				"name asc");
 		dbadapter = new CustomCursorAdapter(this, c);
 		lv.setAdapter(dbadapter);
 	}
@@ -50,19 +50,5 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 
 	public void onDestroy() {
 		db.close();
-	}
-
-	public void showAllEvents(View v) {
-		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
-				"name", "starttime", "endtime" }, null, null, null, null,
-				"starttime asc");
-		dbadapter.changeCursor(c);
-	}
-
-	public void showMyEvents(View v) {
-		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
-				"name", "starttime", "endtime" }, "isfavorite = 1", null, null,
-				null, "starttime asc");
-		dbadapter.changeCursor(c);
 	}
 }
