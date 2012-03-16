@@ -16,10 +16,10 @@ public class CustomOpenHelper extends SQLiteOpenHelper{
     		"CREATE TABLE speakers (_id INTEGER PRIMARY KEY, event_id INTEGER, speaker_id INTEGER, FOREIGN KEY(event_id) REFERENCES event(_id), FOREIGN KEY(speaker_id) REFERENCES person(_id))";
     
     private static final String[] INITIAL_DATA = {
-			"insert into event values(0, 'Milestone pre-meeting', '2012-03-16 14:00:00', '2012-03-16 15:00:00', 'Somewhere', 0, 0);",
-    		"insert into event values(1, 'Milestone meeting', '2012-03-16 15:00:00', '2012-03-16 16:00:00', 'Vance Hall', 0, 0);",
-    		"insert into person values(0, 'Robert Mead', 'robmead@seas.upenn.edu', 'Dude');",
-    		"insert into speakers values(0, 0, 0);" };
+			"insert into event values(NULL, 'Milestone pre-meeting', '2012-03-16 14:00', '2012-03-16 15:00', 'Somewhere', 0, 0);",
+    		"insert into event values(NULL, 'Milestone meeting', '2012-03-16 15:00', '2012-03-16 16:00', 'Vance Hall', 0, 0);",
+    		"insert into person  values(NULL, 'Robert Mead', 'robmead@seas.upenn.edu', 'Dude', NULL);", };
+    		//"insert into speakers values(0, 0, 0);" };
 
  
     CustomOpenHelper(Context context) {

@@ -30,7 +30,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 	public CustomCursorAdapter(Activity activity, Cursor c) {
 		super(activity, c);
 		this.activity = activity;
-		this.date_input_format = new SimpleDateFormat("YYY-MM-DD HH:MM");
+		this.date_input_format = new SimpleDateFormat("yyyy-MM-DD HH:MM");
 		this.date_output_format = new SimpleDateFormat("hh:mm");
 		this.date_output_format_ampm = new SimpleDateFormat("aa");
 	}
@@ -98,7 +98,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 					v.setPressed(!v.isPressed());
 					int event_id = ((Integer) v.getTag(R.id.EVENT_DB_KEY))
 							.intValue();
-					((WhartonAndroidAppActivity) activity).eventButtonClicked(
+					((EventListActivity) activity).eventButtonClicked(
 							event_id, v.isPressed());
 					return true;
 				} else
@@ -114,7 +114,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 			public void onClick(View v) {
 				int event_id = ((Integer) v.getTag(R.id.EVENT_DB_KEY))
 						.intValue();
-				((WhartonAndroidAppActivity) activity)
+				((EventListActivity) activity)
 						.eventTextClicked(event_id);
 			}
 		};
