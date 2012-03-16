@@ -62,6 +62,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 			start_time = null;
 			end_time = null;
 		}
+		time.setText(getTimeString(start_time, end_time));
 
 		// Set button tag
 		Button btn = (Button) view.findViewById(R.id.event_select_button);
