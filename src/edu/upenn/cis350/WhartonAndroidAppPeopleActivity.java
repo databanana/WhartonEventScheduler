@@ -41,7 +41,10 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 	public void messageClicked(int person_id) {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("text/plain");
-		i.putExtra(Intent.EXTRA_EMAIL, new String[] {"bob@email.com"});
+		//Cursor emailquery = db.query("person", new String[] {"_id", "email"}, "_id="+person_id, null, null, null, null);
+		//String email = emailquery.getString(emailquery.getColumnIndex("email"));
+		String email = "bob@email.com";
+		i.putExtra(Intent.EXTRA_EMAIL, new String[] {email});
 		i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Wharton event");
 		this.startActivity(Intent.createChooser(i, "Send mail..."));
 		
