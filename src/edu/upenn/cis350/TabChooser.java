@@ -37,13 +37,17 @@ public class TabChooser extends TabActivity {
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 	    
-	    tabHost.setCurrentTab(1);
+        tabHost.getTabWidget().getChildAt(0).getLayoutParams().height = tabHeight;
+        tabHost.getTabWidget().getChildAt(1).getLayoutParams().height = tabHeight;
+        
+	    tabHost.setCurrentTab(0);
 	}
 	
 	private static View createTab(Context context, Drawable background, Drawable icon, String text) {
         View view = LayoutInflater.from(context).inflate(R.layout.app_tab, null);
         TextView textView = (TextView) view.findViewById(R.id.tab_text);
         textView.setText(text);
+        // TODO: include icon
         view.setBackgroundDrawable(background);
         return view;
     }
