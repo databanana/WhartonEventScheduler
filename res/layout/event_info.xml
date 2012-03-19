@@ -67,15 +67,36 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
+        android:text="Time: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     	    <TextView
-	        android:id="@+id/event_name"
+	        android:id="@+id/event_time_range"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="Event"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    	    <TextView
+	        android:id="@+id/event_location"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Event"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 
