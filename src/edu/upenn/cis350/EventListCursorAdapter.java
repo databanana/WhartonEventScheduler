@@ -17,17 +17,13 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-public class CustomCursorAdapter extends CursorAdapter {
+public class EventListCursorAdapter extends CursorAdapter {
 	private Activity activity;
 	private SimpleDateFormat date_input_format;
 	private SimpleDateFormat date_output_format;
 	private SimpleDateFormat date_output_format_ampm;
 
-//	public CustomCursorAdapter(Activity activity, Cursor c) {
-//		super(activity, c);
-//		this.activity = activity;
-//	}
-	public CustomCursorAdapter(Activity activity, Cursor c) {
+	public EventListCursorAdapter(Activity activity, Cursor c) {
 		super(activity, c);
 		this.activity = activity;
 		this.date_input_format = new SimpleDateFormat("yyyy-MM-DD HH:MM");
@@ -35,7 +31,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		this.date_output_format_ampm = new SimpleDateFormat("aa");
 	}
 
-	 public CustomCursorAdapter(Activity activity, Cursor c, boolean
+	 public EventListCursorAdapter(Activity activity, Cursor c, boolean
 	 autoRequery) {
 		 super(activity, c, autoRequery);
 		 this.activity = activity;
@@ -44,6 +40,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		this.date_output_format_ampm = new SimpleDateFormat("aa");
 	 }
 
+	//Called to create a list element from a database row
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 
@@ -122,6 +119,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		alltext.setOnClickListener(eventListener);
 	}
 
+	//Called to create a list element
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
@@ -131,6 +129,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		return v;
 	}
 	
+	//Return the time ranges of events in a readable format
 	public String getTimeString(Date start, Date end) {
 		if (start==null || end==null) return "";
 		String start_ampm = date_output_format_ampm.format(start);
@@ -139,7 +138,7 @@ public class CustomCursorAdapter extends CursorAdapter {
 		String endtime = date_output_format.format(end);
 		if (start_ampm.equals(end_ampm))
 			return starttime + "-" + endtime + " " + end_ampm;
-		else return starttime + " " + start_ampm + endtime + " " + end_ampm;
+		else return starttime + " " + start_ampm + "-" + endtime + " " + end_ampm;
 	}
 
 }

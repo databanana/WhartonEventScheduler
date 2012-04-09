@@ -21,7 +21,7 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		// Create a SQLite database holding event info
-		CustomOpenHelper dbopenhelper = new CustomOpenHelper(this);
+		DatabaseOpener dbopenhelper = new DatabaseOpener(this);
 		db = dbopenhelper.getWritableDatabase();
 
 		setContentView(R.layout.people);

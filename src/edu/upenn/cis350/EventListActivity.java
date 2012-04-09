@@ -13,7 +13,7 @@ public class EventListActivity extends Activity {
 
 	private SQLiteDatabase db;
 	private ListView lv;
-	private CustomCursorAdapter dbadapter;
+	private EventListCursorAdapter dbadapter;
 	private boolean favoriteview = false;
 
 	/** Called when the activity is first created. */
@@ -22,7 +22,7 @@ public class EventListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		// Create a SQLite database holding event info
-		CustomOpenHelper dbopenhelper = new CustomOpenHelper(this);
+		DatabaseOpener dbopenhelper = new DatabaseOpener(this);
 		db = dbopenhelper.getWritableDatabase();
 		
 		setContentView(R.layout.event_list);
@@ -33,7 +33,7 @@ public class EventListActivity extends Activity {
 		Cursor c = db.query("event", new String[] { "_id", "isfavorite",
 				"name", "starttime", "endtime" }, null, null, null, null,
 				"starttime asc");
-		dbadapter = new CustomCursorAdapter(this, c, false);
+		dbadapter = new EventListCursorAdapter(this, c, false);
 		lv.setAdapter(dbadapter);
 	}
 
