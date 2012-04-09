@@ -37,25 +37,25 @@ public class EventListActivity extends Activity {
 		lv.setAdapter(dbadapter);
 	}
 
+	//Called when the star (for favoriting events) next to an event is pressed.
 	public void eventButtonClicked(int event_id, boolean isfavorite) {
-		int dbvalue;
+		int isfavorite_dbval;
 		if (isfavorite)
-			dbvalue = 1;
+			isfavorite_dbval = 1;
 		else
-			dbvalue = 0;
+			isfavorite_dbval = 0;
 		ContentValues cv = new ContentValues();
-		cv.put("isfavorite", dbvalue);
+		cv.put("isfavorite", isfavorite_dbval);
 		// Update database contents
 		db.update("event", cv, "_id=" + event_id, null);
-		if (favoriteview && dbvalue == 0) {
+		//If event is un-favorited and only favorites are being displayed,
+		//re-create the list to remove the event
+		if (favoriteview && isfavorite_dbval == 0) {
 			Cursor c = db.query("event", new String[] { "_id", "isfavorite",
 					"name", "starttime", "endtime" }, "isfavorite = 1", null,
 					null, null, "starttime asc");
 			dbadapter.changeCursor(c);
 		}
-		// Do something else when the button is clicked?
-		// Toast.makeText(getApplicationContext(), "Button clicked: " + event_id
-		// + " Pressed: " + isfavorite, Toast.LENGTH_SHORT).show();
 	}
 	
 	public void refresh(View v) { Log.d("refresh", "Called refresh"); } 

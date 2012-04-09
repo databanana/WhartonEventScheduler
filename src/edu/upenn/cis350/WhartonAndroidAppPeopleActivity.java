@@ -32,7 +32,6 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 		Cursor c = db.query("person", new String[] { "_id",
 				"name", "title", "profile_picture" }, null, null, null, null,
 				"name asc");
-		//Need to use a custom cursor adapter
 		dbadapter = new PeopleCursorAdapter(this, c);
 		lv.setAdapter(dbadapter);
 	}

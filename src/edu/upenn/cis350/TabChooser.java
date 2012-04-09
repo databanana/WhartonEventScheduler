@@ -10,6 +10,8 @@ import android.graphics.drawable.Drawable;
 
 
 public class TabChooser extends TabActivity {
+	//Called to create a view in which two tabs allow switching between viewing
+	//lists of people and lists of events.
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);

@@ -26,6 +26,7 @@ public class PeopleCursorAdapter extends CursorAdapter {
 		this.activity = activity;
 	}
 
+	//Called to create list elements from a db row
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		// Set view tag as event ID
@@ -33,14 +34,14 @@ public class PeopleCursorAdapter extends CursorAdapter {
 				.getColumnIndex("_id")));
 		view.setTag(R.id.EVENT_DB_KEY, person_pk);
 		
-		// TODO: Set person's profile picture
+		// TODO: Set person's profile picture (where will we get this from?)
 
 		// Set name view tag and text
 		TextView name = (TextView) view.findViewById(R.id.person_name);
 		name.setTag(R.id.EVENT_DB_KEY, person_pk);
 		name.setText(cursor.getString(cursor.getColumnIndex("name")));
 
-		// TODO: parse person's title
+		// Set person's title
 		TextView titleView = (TextView) view.findViewById(R.id.person_title);
 		String title = cursor
 				.getString(cursor.getColumnIndex("title"));
