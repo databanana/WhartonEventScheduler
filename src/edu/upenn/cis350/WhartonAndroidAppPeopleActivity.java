@@ -28,8 +28,7 @@ public class WhartonAndroidAppPeopleActivity extends Activity {
 
 		this.lv = (ListView) findViewById(R.id.peopleListView);
 		// Subclass CursorAdapter to read data from the database into the
-		// ListView
-		// TODO: Fix this for attendees
+		//ListView
 		Cursor c = db.query("person", new String[] { "_id",
 				"name", "title", "profile_picture" }, null, null, null, null,
 				"name asc");
